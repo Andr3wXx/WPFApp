@@ -25,9 +25,13 @@ namespace WPFApp
 
         void AddMessage(string message)
         {
-            Messages.Content +=
-                $"Mensaje: {message}," +
-                $"Hilo actual: {Thread.CurrentThread.ManagedThreadId}\n";
+            int CurrentThreadId = Thread.CurrentThread.ManagedThreadId;
+            this.Dispatcher.Invoke(() =>
+                {
+                Messages.Content +=
+                    $"Mensaje: {message}," +
+                    $"Hilo actual: {CurrentThreadId}\n";
+            });
         }
         void CreateTask()
         {

@@ -20,5 +20,16 @@ namespace WPFApp
         {
             InitializeComponent();
         }
+
+        void CreateTask()
+        {
+            Task T;
+            // ¿Que es el delegado? Apuntadores  a funciones
+        }
+
+        void ShowMessege()
+        {
+            MessageBox.Show("Ejecutando el metodo ShowMessage");
+        }
     }
 }

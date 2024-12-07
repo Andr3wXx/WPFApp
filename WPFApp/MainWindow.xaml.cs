@@ -25,11 +25,45 @@ namespace WPFApp
         {
             Task T;
             // ¿Que es el delegado? Apuntadores  a funciones
+            //Por ejemplo: Action y Func
+            Action Code = new Action(ShowMessege);
+            T = new Task(Code);
+            Task T2 = new Task(delegate
+            {
+                MessageBox.Show("Ejecutando una tarea en metodo anonimo");
+            }
+            );
+            Task T3A = new Task(ShowMessege);
+            Task T3 = new Task(
+                () => ShowMessege());
+
+            // Expresión Lambda;
+            // (Parametros de entrada( =>) Expresión
+            //() => Expreión
+            // El operador lambda (=>) se lee como se "Va hacia"
+
+
+            Task T4 = new Task(() =>  MessageBox.Show("Ejecutando la Tarea 4"));
+
+            Task T5 = new Task(() =>
+            {
+                DateTime CurrentDate = DateTime.Today;
+                DateTime StartDate = CurrentDate.AddDays(30);
+                MessageBox.Show($"Tarea 5. Fecha calculada: {StartDate}");
+            }
+            );
+
+            Task T6 = new Task((message) =>
+            MessageBox.Show(message.ToString()), "Expresión Lambda con parametros");
+
         }
 
         void ShowMessege()
         {
             MessageBox.Show("Ejecutando el metodo ShowMessage");
         }
-    }
+
+        
+
+}
 }
